@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Agiliza as duvidas</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body data-ng-app ="DuvidasApp">
+        <div data-ng-controller="DuvidaController as controller">
+            <h1>Agiliza Duvidas</h1>
+            <h5>{{controller.usuario}}</h5>
+
+            <div ng-show="controller.duvida">
+                <label for="duvidaId">ID: </label>
+                <input type="number" 
+                       id="duvidaId" 
+                       ng-model="controller.duvida.id"
+                       disabled><br>
+
+                <label for="assunto">Assunto: </label>
+                <input type="text" id="assunto" ng-model="controller.duvida.assunto"><br>
+
+                <label for="mensagem">Mensagem: </label>
+                <textarea rows="4" id="mensagem" ng-model="controller.duvida.mensagem"></textarea><br>
+
+                <button type="button" data-ng-click="controller.salvar(controller.duvida)">Salvar</button>
+                <button type="button" data-ng-click="controller.duvida = undefined">Cancelar</button>
+            </div>
+
+            <div data-ng-show="!controller.duvida">
+                <button type="button" data-ng-click="controller.novo()">Novo duvida</button><br>
+                <br>
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>Assunto</th>
+                        <th>Status</th>
+                        <th>Mensagem</th>
+                        <th>Opções</th>
+                    </tr>
+                    <tr data-ng-repeat="duvida in controller.duvidas">
+                        <td>{{duvida.id}}</td>
+                        <td>{{duvida.assunto}}</td>
+                        <td>{{duvida.status}}</td>
+                        <td>{{duvida.mensagem}}</td>
+                        <td>
+                            <button type="button" data-ng-click="controller.alterar(duvida)">Alterar</button>
+                            <button type="button" data-ng-click="controller.deletar(duvida)">Excluir</button>
+                            <button type="button" 
+                                    data-ng-show="duvida.status !== 'FECHADO'"
+                                    data-ng-click="controller.concluir(duvida)">Concluir</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="resource/angular.js"></script>
+    <script src="resource/duvidas.js"></script>
+</body>
+</html>
