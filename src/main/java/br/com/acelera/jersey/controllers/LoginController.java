@@ -24,9 +24,9 @@ import io.jsonwebtoken.SignatureAlgorithm;
 public class LoginController {
 
 	@POST
-	@Path("login")
-	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/")
 	public Response create(User user) {
 
 		String KEY = "paranguaricotirrimiroaro";
@@ -35,7 +35,10 @@ public class LoginController {
 				.setIssuedAt(new Date(time)).setExpiration(new Date(time + 900000)).compact();
 		JsonObject json = Json.createObjectBuilder().add("JWT", jwt).build();
 		user.setToken(json.toString());
-		System.out.println(json);
+		System.out.println(
+
+				
+				);
 
 		if (!json.isEmpty()) {
 			try {
