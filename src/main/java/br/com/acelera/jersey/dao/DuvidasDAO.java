@@ -11,11 +11,11 @@ import java.util.logging.Logger;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Response;
 
-import br.com.acelera.jersey.controllers.DuvidaController;
 import br.com.acelera.jersey.infra.ConexaoJDBC;
 import br.com.acelera.jersey.infra.ConexaoMySqlJDBC;
 import br.com.acelera.jersey.models.Duvida;
 import br.com.acelera.jersey.models.Status;
+import br.com.acelera.jersey.sera.DuvidaController;
 
 public class DuvidasDAO {
 

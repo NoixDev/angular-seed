@@ -9,10 +9,10 @@ import java.util.logging.Logger;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Response;
 
-import br.com.acelera.jersey.controllers.DuvidaController;
 import br.com.acelera.jersey.infra.ConexaoJDBC;
 import br.com.acelera.jersey.infra.ConexaoMySqlJDBC;
 import br.com.acelera.jersey.models.User;
+import br.com.acelera.jersey.sera.DuvidaController;
 
 public class UserDAO {
 
@@ -30,7 +30,7 @@ public class UserDAO {
 		try {
 			PreparedStatement stmt = this.conexao.getConnection().prepareStatement(sqlQuery);
 			stmt.setString(1, user.getusername().toString());
-			stmt.setString(2, user.getPassword());
+			stmt.setString(2, user.getPassword());	
 			
 			stmt.executeUpdate();
 			this.conexao.commit();
@@ -44,17 +44,17 @@ public class UserDAO {
 		return sucesso;
 	}
 	
-	public String validar(String username, String password) throws SQLException, ClassNotFoundException {
+	public String validar(User user) throws SQLException, ClassNotFoundException {
 		String sqlQuery = "SELECT * FROM users WHERE name = ? and password = ?";
-
+		String token = null;
 		try {
 			PreparedStatement stmt = this.conexao.getConnection().prepareStatement(sqlQuery);
-			stmt.setString(1, username);
-			stmt.setString(2, password);
+			stmt.setString(1, user.getusername());
+			stmt.setString(2, user.getPassword());
 			ResultSet rs = stmt.executeQuery();
 			
 			if (rs.next()) {
-				String token = rs.getString("token");
+				token = rs.getString("token");
 				
 				return token;
 			}
@@ -63,7 +63,7 @@ public class UserDAO {
 			throw new WebApplicationException(Response.Status.INTERNAL_SERVER_ERROR);
 		}
 
-		return auth;
+		return token;
 	}
 /*	private User parser(ResultSet resultSet) throws SQLException {
 		User u = new User();

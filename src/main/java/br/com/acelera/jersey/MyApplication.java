@@ -1,4 +1,4 @@
-package br.com.acelera.jersey;
+	package br.com.acelera.jersey;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -6,6 +6,7 @@ package br.com.acelera.jersey;
  */
 
 import javax.ws.rs.ApplicationPath;
+
 import org.glassfish.jersey.server.ResourceConfig;
 
 /**

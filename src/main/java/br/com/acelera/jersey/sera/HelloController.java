@@ -1,4 +1,4 @@
-package br.com.acelera.jersey.controllers;
+package br.com.acelera.jersey.sera;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;

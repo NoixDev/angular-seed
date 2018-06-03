@@ -5,13 +5,11 @@ public class User {
 	private Long id;
 	private String username;
 	private String password;
-	private String token;
 	
-	public User(Long id, String username, String password, String token) {
+	public User(Long id, String username, String password) {
 		this.id = id;
 		this.username = username;
 		this.password = password;
-		this.token = token;
 	}
 	public User() {
 		
@@ -33,12 +31,6 @@ public class User {
 	}
 	public void setId(long l) {
 		this.id = l;
-	}
-	public String getToken() {
-		return token;
-	}
-	public void setToken(String token) {
-		this.token = token;
 	}
 
 }

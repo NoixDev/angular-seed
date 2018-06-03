@@ -1,4 +1,4 @@
-package br.com.acelera.jersey.controllers;
+package br.com.acelera.jersey.sera;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -21,12 +21,11 @@ import br.com.acelera.jersey.dao.DuvidasDAO;
 import br.com.acelera.jersey.models.Duvida;
 import br.com.acelera.jersey.models.Status;
 
-@Path("duvidas")
+@Path("duvidas/")
 public class DuvidaController {
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	@Path("/")
 	public List<Duvida> listDuvidas() {
 		try {
 			DuvidasDAO dao = new DuvidasDAO();
